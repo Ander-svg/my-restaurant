@@ -5,6 +5,7 @@ import logo from '../assets/Logo.png'
 import AuthService from '../service/AuthService';
 import { User } from '../types/Auth';
 
+
 // Definición de las propiedades del componente Login
 interface LoginProps {
   onLoginSuccess: (user: User) => void;
@@ -17,10 +18,6 @@ const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  
-  // Hook para mostrar notificaciones toast
-  const toast = useToast();
-
   // Manejador del envío del formulario
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -30,23 +27,14 @@ const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
       // Intenta iniciar sesión con las credenciales proporcionadas
       const user = await AuthService.login(username, password);
       if (user) {
-        // Muestra un toast de éxito si el inicio de sesión es correcto
-        toast({
-          title: 'Login exitoso',
-          status: 'success',
-          duration: 3000,
-        });
+        // Muestra un mensaje de éxito si el inicio de sesión es correcto
+        alert('Login exitoso');
         // Llama a la función de éxito pasada como prop
         onLoginSuccess(user);
       }
     } catch (error) {
-      // Muestra un toast de error si las credenciales son incorrectas
-      toast({
-        title: 'Error de autenticación',
-        description: 'Usuario o contraseña incorrectos',
-        status: 'error',
-        duration: 3000,
-      });
+      // Muestra un mensaje de error si las credenciales son incorrectas
+      alert('Error de autenticación: Usuario o contraseña incorrectos');
     } finally {
       // Desactiva el estado de carga
       setIsLoading(false);
@@ -67,27 +55,30 @@ const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
         </div>
         <div className="box-text">
             <input
-            id="nombreUsuario" 
-            type="text"
-            placeholder="Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+              id="nombreUsuario" 
+              type="text"
+              placeholder="Username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
             />
             <i className='bx bxs-user' ></i>
         </div>
         <div className="box-text">
             <input 
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            name=""
-            placeholder="Password" 
-            id="contrasena" />
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              name=""
+              placeholder="Password" 
+              id="contrasena" />
             <i className='bx bxs-lock-alt'></i>
         </div>
-        <button type="submit" className="btn" isLoading={isLoading}>Iniciar Sesion</button>
+        <button type="submit" 
+          className="btn"
+          disabled={isLoading}
+          > Iniciar Sesion
+        </button>
     </form>
-   {error && <p>Todos los campos son obligatorios</p>}
     </div>
 </section>
   );

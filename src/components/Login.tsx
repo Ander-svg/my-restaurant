@@ -1,7 +1,7 @@
 // src/components/Login.tsx
 import React, { useState } from 'react';
 import logo from '../assets/Logo.png'
-
+import '../Styles/Login.css'
 import AuthService from '../service/AuthService';
 import { User } from '../types/Auth';
 
@@ -14,8 +14,8 @@ interface LoginProps {
 // Componente funcional Login
 const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
   // Estados para el nombre de usuario, contraseña y estado de carga
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [nombreUsuario, setNombreUsuario] = useState('');
+  const [contrasena, setContrasena] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
   // Manejador del envío del formulario
@@ -25,7 +25,7 @@ const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
     
     try {
       // Intenta iniciar sesión con las credenciales proporcionadas
-      const user = await AuthService.login(username, password);
+      const user = await AuthService.login(nombreUsuario, contrasena);
       if (user) {
         // Muestra un mensaje de éxito si el inicio de sesión es correcto
         alert('Login exitoso');
@@ -55,22 +55,20 @@ const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
         </div>
         <div className="box-text">
             <input
-              id="nombreUsuario" 
               type="text"
               placeholder="Username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              value={nombreUsuario}
+              onChange={(e) => setNombreUsuario(e.target.value)}
             />
             <i className='bx bxs-user' ></i>
         </div>
         <div className="box-text">
             <input 
               type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              value={contrasena}
+              onChange={(e) => setContrasena(e.target.value)}
               name=""
-              placeholder="Password" 
-              id="contrasena" />
+              placeholder="Password"/>
             <i className='bx bxs-lock-alt'></i>
         </div>
         <button type="submit" 

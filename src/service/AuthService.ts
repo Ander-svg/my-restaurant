@@ -3,7 +3,7 @@ import axios from 'axios';
 import { User } from '../types/Auth';
 
 // URL base para la autenticación
-const API_URL = '/authenticate';
+const API_URL = 'http://localhost:8020/authenticate';
 
 class AuthService {
   // Método para iniciar sesión

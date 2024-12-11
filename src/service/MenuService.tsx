@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Menu } from "../types/Menu";
 
-const API_URL = '/api/menu';
+const API_URL = 'http://localhost:8020/api/menu';
 
 class MenuService {
 
@@ -17,11 +17,11 @@ class MenuService {
         return axios.post<Menu>(API_URL, menu);
     }
 
-    updateEstudiante(menuId: number, menu: Menu) {//Actuliza la informacion del menu
+    updateMenu(menuId: number, menu: Menu) {//Actuliza la informacion del menu
         return axios.put<Menu>(`${API_URL}/${menuId}`, menu);
     }
 
-    declareMenu(menuId: number){//Elimina un menu por ID
+    deleteMenu(menuId: number){//Elimina un menu por ID
         return axios.delete<void>(`${API_URL}/${menuId}`)
     }
 

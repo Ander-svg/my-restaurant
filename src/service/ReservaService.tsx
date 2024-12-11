@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Reserva } from "../types/Reserva";
 
-const API_URL = '/api/reserva';
+const API_URL = 'http://localhost:8020/api/reserva';
 
 class ReservaService {
 
@@ -21,7 +21,7 @@ class ReservaService {
         return axios.put<Reserva>(`${API_URL}/${reservaId}`, reserva);
     }
 
-    declareReserva(reservaId: number){
+    deleteReserva(reservaId: number){
         return axios.delete<void>(`${API_URL}/${reservaId}`)
     }
 

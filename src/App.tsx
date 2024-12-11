@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './App.css'
 import Login from './components/Login';
-import Index from './components/Index';
+import MenuTable from './components/MenuTable';
+import PedidoTable from './components/PedidoTable';
 import AuthService from './service/AuthService';
 import { User } from './types/Auth';
 import './util/axiosConfig';
@@ -41,6 +42,7 @@ const App: React.FC = () => {
         <div>
           <span>Bienvenidos, {username}</span>
           <button onClick={handleLogout}>Cerrar Sesion</button>
+          <MenuTable/>
         </div>
       )
     }

@@ -1,11 +1,11 @@
 import axios from "axios";
 import { Pedido } from "../types/Pedido";
 
-const API_URL = '/api/pedido';
+const API_URL = 'http://localhost:8020/api/pedido';
 
 class PedidoService {
 
-    getPedido(){
+    getPedidos(){
         return axios.get<Pedido[]>(API_URL);
     }
 
@@ -21,7 +21,7 @@ class PedidoService {
         return axios.put<Pedido>(`${API_URL}/${pedidoId}`, pedido);
     }
 
-    declarePedido(pedidoId: number){
+    deletePedido(pedidoId: number){
         return axios.delete<void>(`${API_URL}/${pedidoId}`)
     }
 

@@ -72,7 +72,6 @@ const PedidoTable: React.FC = () => {
                 <th style={{ border: '1px solid black', padding: '8px' }}>Menu ID</th>
                 <th style={{ border: '1px solid black', padding: '8px' }}>Estado</th>
                 <th style={{ border: '1px solid black', padding: '8px' }}>Fecha</th>
-                <th style={{ border: '1px solid black', padding: '8px' }}>Acciones</th>
               </tr>
             </thead>
             <tbody>

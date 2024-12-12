@@ -43,6 +43,7 @@ const App: React.FC = () => {
           <span>Bienvenidos, {username}</span>
           <button onClick={handleLogout}>Cerrar Sesion</button>
           <MenuTable/>
+          <PedidoTable/>
         </div>
       )
     }
